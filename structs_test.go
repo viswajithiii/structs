@@ -168,15 +168,13 @@ func TestMap_MultipleCustomTag(t *testing.T) {
 		X string `aa:"ax"`
 	}{"a_value"}
 
-	aStruct := New(A)
-	aStruct.TagName = "aa"
+	aStruct := NewWithTagName(A, "aa")
 
 	var B = struct {
 		X string `bb:"bx"`
 	}{"b_value"}
 
-	bStruct := New(B)
-	bStruct.TagName = "bb"
+	bStruct := NewWithTagName(B, "bb")
 
 	a, b := aStruct.Map(), bStruct.Map()
 	if !reflect.DeepEqual(a, map[string]interface{}{"ax": "a_value"}) {
@@ -1339,9 +1337,7 @@ func TestTagWithStringOption(t *testing.T) {
 		}
 	}()
 
-	s := New(address)
-
-	s.TagName = "json"
+	s := NewWithTagName(address, "json")
 	m := s.Map()
 
 	if m["person"] != person.String() {
