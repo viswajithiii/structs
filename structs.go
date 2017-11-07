@@ -25,10 +25,16 @@ type Struct struct {
 // New returns a new *Struct with the struct s. It panics if the s's kind is
 // not struct.
 func New(s interface{}) *Struct {
+    return NewWithTagName(s, DefaultTagName)
+}
+
+// NewWithTagName returns a new *Struct with the struct s, and the provided tagName
+// It panics if the s's kind is not struct
+func NewWithTagName(s interface{}, tagName string) *Struct {
 	return &Struct{
 		raw:     s,
 		value:   strctVal(s),
-		TagName: DefaultTagName,
+		TagName: tagName,
 	}
 }
 
