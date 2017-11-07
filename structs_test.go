@@ -1377,7 +1377,7 @@ func TestNonStringerTagWithStringOption(t *testing.T) {
 		}
 	}()
 
-	s := NewWithTagname(d, "json")
+	s := NewWithTagName(d, "json")
 
 	m := s.Map()
 
