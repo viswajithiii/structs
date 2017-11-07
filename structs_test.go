@@ -128,8 +128,7 @@ func TestMap_CustomTag(t *testing.T) {
 	}
 	T.D.E = "e-value"
 
-	s := New(T)
-	s.TagName = "json"
+	s := NewWithTagName(T, "json")
 
 	a := s.Map()
 
