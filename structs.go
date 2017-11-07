@@ -524,8 +524,7 @@ func (s *Struct) nested(val reflect.Value) interface{} {
 
 	switch v.Kind() {
 	case reflect.Struct:
-		n := New(val.Interface())
-		n.TagName = s.TagName
+		n := NewWithTagName(val.Interface(), s.TagName)
 		m := n.Map()
 
 		// do not add the converted value if there are no exported fields, ie:
